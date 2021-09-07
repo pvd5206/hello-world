@@ -8,6 +8,12 @@ export class HelloWorld extends LitElement {
         padding: 25px;
         color: var(--hello-world-text-color, #000);
       }
+
+      :host([this.counter = 10]) {
+        display: block;
+        padding: 25px;
+        color: var(--hello-world-text-color, #b2a); //this is the changed display for when the counter hits 10
+      }
     `;
   }
 
@@ -32,6 +38,8 @@ export class HelloWorld extends LitElement {
     return html`
       <h2>${this.title} Nr. ${this.counter}!</h2>
       <button @click=${this.__increment}>increment</button>
+      <h2>: ${this.counter}</h2> //I am confused
+      <button @click="${() => this.counter = !this.counter}">Toggle active</button> //I am stuck
     `;
   }
 }
